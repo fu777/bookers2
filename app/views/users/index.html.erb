@@ -1,0 +1,12 @@
+<% @users.each do |user| %>
+
+<div>
+  <h2>Users</h2>
+  <h4>image</h4>
+  <h4>name</h4>
+  <p><%= image_tag user.get_profile_image(40, 40) %></p>
+  <p><%= user.name %></p>
+  <%= link_to 'show', user_path(current_user.id) %>
+</div>
+
+<% end %>
