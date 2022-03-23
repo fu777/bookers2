@@ -31,3 +31,8 @@
 
 en:
   hello: "Hello world"
+  
+  devise:
+    sessions:
+      signed_in: "Welcome! You have signed up successfully."
+      signed_out: "Signed out successfully."

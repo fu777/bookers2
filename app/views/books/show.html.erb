@@ -1,8 +1,13 @@
+<%= render 'users/info', user: @user %>
+<%= render 'form', book: @book %>
+
 <div>
   <h1>Book detail</h1>
   <hr>
   <%= image_tag @book.user.get_profile_image(40, 40) %>
-  <p><%= @book.user.name %></p>
+  <%= link_to user_path(current_user.id) do %>
+    <p><%= @book.user.name %></p>
+  <% end %>
   <p>
     <%= link_to book_path(@book.id)  do %>
     <p><%= @book.title %></p>
@@ -12,7 +17,7 @@
   
   <% if @book.user == current_user %>
     <%= link_to "Edit", edit_book_path(@book.id) %>
-    <%= link_to "Destroy", book_path(@book), method: :delete %>
+    <%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
   <% end %>
   
   

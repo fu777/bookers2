@@ -1,11 +1,5 @@
-<div>
-  <h2>User info</h2>
-  <%= image_tag @user.get_profile_image(100, 100) %>
-  <p>name<%= @user.name %></p>
-  <p>introduction<%= @user.introduction %></p>
-  
-  <% if @user == current_user %>
-  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
-  
-</div>
+<%= render 'info', user: @user %>
+<%= render 'books/form', book: @book %>
+
+
+<%= render 'books/list', books: @books %>
