@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def index
     @users = User.all
     @user = current_user
@@ -14,6 +16,10 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    @users = current_user
+    unless current_user.id == @user.user_id
+      redirect_to user_path
+    end
   end
   
   def update
@@ -32,4 +38,9 @@ end
   
   def user_params
     params.require(:user).permit(:name, :profile_image, :introduction)
+  end
+  
+  def correct_user
+    user = User.find(params[:id])
+    redirect_to user_path if current_user != user
   end
