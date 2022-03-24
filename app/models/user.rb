@@ -10,14 +10,11 @@ class User < ApplicationRecord
     presence: true,
     uniqueness: true,
     length: {minimum: 2, maximum: 20}
-  
     
   validates :introduction,
     presence: true,
     length: {maximum: 50}
-  
     
-  
   validates :profile_image, presence: true
   
   has_one_attached :profile_image
