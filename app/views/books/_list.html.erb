@@ -12,7 +12,11 @@
         <% books.each do |book| %>
         <tbody>
           <tr>
-            <td><%= image_tag book.user.get_profile_image(40, 40) %></td>
+            <td>
+              <%= link_to user_path(book.user) do %>
+              <%= image_tag book.user.get_profile_image(40, 40), fallback: "no_image.jpg" %>
+              <% end %>
+              </td>
             <td>
               <%= link_to book_path(book.id) do %>
               <%= book.title %>

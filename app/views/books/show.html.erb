@@ -1,4 +1,4 @@
-<%= render 'users/form', user: @user, book: @book %>
+<%= render 'users/form', user: @user, book: @newbook %>
 
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
@@ -6,7 +6,7 @@
         <tbody>
           <tr>
             <td>
-              <%= image_tag @book.user.get_profile_image(40, 40) %>
+              <%= image_tag @book.user.get_profile_image(40, 40), fallback: "no_image.jpg" %>
               <br>
               <%= link_to user_path(@book.user.id) do %>
               <%= @book.user.name %>
@@ -18,7 +18,7 @@
               <% end %>
             </td>
             <td><%= @book.body %></td>
-            <% if @book.user == current_user %>
+            <% if @book.user_id == current_user.id %>
             <td><%= link_to "Edit", edit_book_path(@book.id), class: 'btn btn-sm btn-success' %></td>
             <td><%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？", class: 'btn btn-sm btn-danger' %></td>
             <% end %>
